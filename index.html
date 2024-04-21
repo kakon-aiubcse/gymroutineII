@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GYM Routine</title>
+    <style>
+      body {
+        font-family: "Open Sans", Arial, sans-serif; /* Updated font for a modern look */
+        margin: 0;
+        padding: 0;
+        background-color: #e9ecef; /* Slightly different shade for contrast */
+      }
+
+      .container {
+        max-width: 960px; /* Wider container for more content */
+        margin: 20px auto; /* Add a top margin */
+        padding: 40px; /* Increase padding */
+        background-color: white; /* Container background for better readability */
+        border-radius: 10px; /* Add border radius for smooth corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px; /* Increased margin */
+        font-size: 2em; /* Increased font size */
+        color: #343a40; /* Darker color for better readability */
+      }
+      h3 {
+        font-size: 1.75em; /* Increase the font size, adjust the value as needed */
+        background-color: #e0f7fa; /* Apply a light background color */
+        padding: 10px; /* Add padding for better visibility of the background */
+        border-radius: 5px; /* Optional: round the corners for a smoother look */
+        margin-bottom: 20px; /* Add space below the heading */
+      }
+
+      select {
+        width: 100%;
+        padding: 12px; /* Increased padding for a more substantial feel */
+        font-size: 16px;
+        border: 1px solid #ced4da; /* Use a consistent border color */
+        border-radius: 10px; /* Larger border radius for smoother look */
+        transition: border 0.3s; /* Add transition for smooth effects */
+      }
+
+      select:hover {
+        border-color: #495057; /* Darker border on hover */
+      }
+
+      #routineDisplay {
+        border: 1px solid #ced4da; /* Updated border color */
+        border-radius: 10px; /* Consistent border radius */
+        background-color: #ffffff;
+        padding: 30px; /* Increased padding */
+        transition: box-shadow 0.3s; /* Smooth transition for hover effects */
+      }
+
+      #routineDisplay:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Slightly stronger hover effect */
+      }
+      ul {
+        list-style-type: none; /* Remove default bullet points */
+        padding-left: 10px; /* Remove padding on the left side */
+      }
+
+      li {
+        font-weight: bold; /* Keep the bold font weight */
+        padding: 20px 0; /* Add space on top and bottom of each list item */
+      }
+
+      .exercise {
+        margin-bottom: 30px; /* Increased margin */
+      }
+
+      .exercise img {
+        max-width: 80%; /* Ensure the image does not exceed container size */
+        height: 80%; /* Maintain aspect ratio */
+        border-radius: 10px; /* For rounded corners */
+      }
+
+      /* Media query for medium-sized screens (768px to 1024px) */
+      @media (min-width: 768px) and (max-width: 1024px) {
+        .exercise img {
+          max-width: 70%; /* Reduce the maximum width to 75% on medium-sized screens */
+        }
+      }
+
+      .exercise img:hover {
+        transform: scale(1.05); /* Subtle scale on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>GYM Routine</h1>
+
+      <select id="daysDropdown">
+        <option value="" disabled selected>Choose a day</option>
+        <option value="day1">Day – 1: Chest + Shoulder + Triceps</option>
+        <option value="day2">Day – 2: Back + Biceps</option>
+        <option value="day3">Day – 3: Legs + Shoulder + Triceps</option>
+        <option value="day4">Day – 4: Rest</option>
+        <option value="day5">Day – 5: Chest + Abs</option>
+        <option value="day6">Day – 6: Legs + Back + Biceps</option>
+        <option value="day7">Day – 7: Rest</option>
+      </select>
+
+      <div id="routineDisplay">
+        <!-- Routine for selected day will be displayed here -->
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("daysDropdown")
+        .addEventListener("change", function () {
+          var selectedDay = document.getElementById("daysDropdown").value;
+          var routine = getRoutine(selectedDay);
+          document.getElementById("routineDisplay").innerHTML = routine;
+        });
+
+      function getRoutine(day) {
+        switch (day) {
+          case "day1":
+            return `
+      <h3>Day – 1: Chest + Shoulder + Triceps</h3>
+      <div class="exercise">
+        <h3>Chest:</h3>
+        <ul>
+          
+          <li>Barbell flat bench press: 10-15 reps, 3 sets</li>
+          <li><img src="day5/barbell_flat_bench_press.jpg" alt="Barbell Bench Press"></li>
+          <li>Dumbbell incline bench press: 10-15 reps, 3 sets</li>
+          <li><img src="day5/barbell_incline_bench_press.jpg" alt="Dumbbell Incline Bench Press"></li>
+          <li>Cable fly (upper + flat): 10 reps, 3 sets</li>
+          <li><img src="day1/cable_fly.jpg" alt="Cable Fly"></li>
+          <li>Dumbbell decline bench press + Pull over (Super set): 10 reps, 3 sets</li>
+          <li><img src="day1/decline_bench_press.jpg" alt="Dumbbell Decline Bench Press"></li>
+          <li><img src="day1/pullover.jpg" alt="pull over"></li>
+        </ul>
+      </div>
+      <div class="exercise">
+        <h3>Shoulder:</h3>
+        <ul>
+          <li>Dumbbell overhead press: 10-15 reps, 3 sets</li>
+          <li><img src="day1/overhead_press.jpg" alt="Dumbbell Overhead Press"></li>
+          <li>Wide up and row: 10-15 reps, 3 sets</li>
+          <li><img src="day1/wide_up_and_row.jpg" alt="Wide Up and Row"></li>
+          <li>Dumbbell shrugs: 10-15 reps, 3 sets</li>
+          <li><img src="day1/shrugs.jpg" alt="Dumbbell Shrugs"></li>
+          <li>Dumbbell lateral raise + Front raise (Super set): 10 reps, 3 sets</li>
+          <li><img src="day1/lateral_raise.jpg" alt="Dumbbell Lateral Raise"></li>
+        </ul>
+      </div>
+      <div class="exercise">
+        <h3>Triceps:</h3>
+        <ul>
+          <li>Push pull down: 10-15 reps, 3 sets</li>
+          <li><img src="day1/push_pull_down.jpg" alt="Push Pull Down"></li>
+          <li>Cable push down: 10-15 reps, 3 sets</li>
+          <li><img src="day1/cable_push_down.jpg" alt="Cable Push Down"></li>
+          <li>Reverse: 10-15 reps, 3 sets</li>
+          <li><img src="day1/reverse.jpg" alt="Reverse"></li>
+          <li>Bench close grip: 10-15 reps, 3 sets</li>
+          <li><img src="day1/bench_close_grip.jpg" alt="Bench Close Grip"></li>
+        </ul>
+      </div>`;
+          case "day2":
+            return `<h3>Back:</h3>
+<div class="exercise">
+  <ul>
+    
+    <li>Lat pull down: 10-15 reps, 3 sets</li>
+    <li><img src="day2/lat_pull_down.jpg" alt="Lat Pull Down"></li>
+    <li>Seated cable row: 10-15 reps, 3 sets</li>
+    <li><img src="day2/seated_cable_row.jpg" alt="Seated Cable Row"></li>
+    <li>Barbell bend over row + T-bar row (Super set): 10 reps, 3 sets</li>
+    <li><img src="day2/bend_over_row.jpg" alt="Barbell Bend Over Row"></li>
+    <li><img src="day2/t_bar_row.jpg" alt="T-bar Row"></li>
+    <li>Barbell back reverse: 10-15 reps, 3 sets</li>
+    <li><img src="day2/barbell_back_reverse.jpg" alt="Barbell Back Reverse"></li>
+    <li>Back extension: 10-15 reps, 3 sets</li>
+    <li><img src="day2/back_extension.jpg" alt="Back Extension"></li>
+  </ul>
+</div>
+
+<h3>Biceps:</h3>
+<div class="exercise">
+  <ul>
+    <li>Single hand dumbbell curl: 10-15 reps, 3 sets</li>
+    <li><img src="day2/single_hand_dumbbell_curl.jpg" alt="Single Hand Dumbbell Curl"></li>
+    <li>Preacher curl: 10-15 reps, 3 sets</li>
+    <li><img src="day2/preacher_curl.jpg" alt="Preacher Curl"></li>
+    <li>Barbell curl: 10-15 reps, 3 sets</li>
+    <li><img src="day2/barbell_curl.jpg" alt="Barbell Curl"></li>
+    <li>Hammer curl: 10-15 reps, 3 sets</li>
+    <li><img src="day2/hammer_curl.jpg" alt="Hammer Curl"></li>
+  </ul>
+</div>
+`;
+          case "day3":
+            return `<h3>Legs:</h3>
+<div class="exercise">
+  <ul>
+    
+    <li>Barbell squat: 10-15 reps, 3 sets</li>
+    <li><img src="day3/barbell_squat.jpg" alt="Barbell Squat"></li>
+    <li>Leg curl + walking lunges (Super set): 10 reps, 3 sets</li>
+    <li><img src="day3/leg_curl.jpg" alt="Leg Curl"></li>
+    <li><img src="day3/walking_lunges.jpg" alt="Walking Lunges"></li>
+    <li>Leg extension: 10-15 reps, 3 sets</li>
+    <li><img src="day3/leg_extension.jpg" alt="Leg Extension"></li>
+    <li>Leg press + Leg calves: 10 reps, 3 sets</li>
+    <li><img src="day3/leg_press.jpg" alt="Leg Press"></li>
+    <li><img src="day3/leg_calves.jpg" alt="Leg Calves"></li>
+     <h3>Shoulder:</h3>
+    <li>Barbell military press: 10-15 reps, 3 sets</li>
+   
+    <li><img src="day3/barbell_military_press.jpg" alt="Barbell Military Press"></li>
+    <li>Barbell overhead press: 10-15 reps, 3 sets</li>
+    <li><img src="day3/barbell_overhead_press.jpg" alt="Barbell Overhead Press"></li>
+    <li>Dips + Face pull (Super set): 10 reps, 3 sets</li>
+    <li><img src="day3/dips.jpg" alt="Dips"></li>
+    <li><img src="day3/face_pull.jpg" alt="Face Pull"></li>
+    <li>Barbell shrugs: 10-15 reps, 3 sets</li>
+    <li><img src="day3/barbell_shrugs.jpg" alt="Barbell Shrugs"></li>
+  </ul>
+</div>
+
+<h3>Triceps:</h3>
+<div class="exercise">
+  <ul>
+    <li>Dumbbell kickback: 10-15 reps, 3 sets</li>
+    <li><img src="day3/dumbbell_kickback.jpg" alt="Dumbbell Kickback"></li>
+    <li>Dumbbell extension: 10-15 reps, 3 sets</li>
+    <li><img src="day3/dumbbell_extension.jpg" alt="Dumbbell Extension"></li>
+    <li>Flat Dumbbell (Close grip): 10-15 reps, 3 sets</li>
+    <li><img src="day3/flat_dumbbell_close_grip.jpg" alt="Flat Dumbbell Close Grip"></li>
+  </ul>
+</div>
+`;
+          case "day4":
+            return "<h3>Day 4: Rest</h3><p>Rest day - Take a break!</p>";
+          case "day5":
+            return `<h3>Stretching and Push up and Free squad:</h3>
+<div class="exercise">
+  <ul>
+    
+    
+    <li>Barbell flat bench press: 10-15 reps, 3 sets</li>
+    <li><img src="day5/barbell_flat_bench_press.jpg" alt="Barbell Flat Bench Press"></li>
+    
+    <li>Barbell incline bench press: 10-15 reps, 3 sets</li>
+    <li><img src="day5/barbell_incline_bench_press.jpg" alt="Barbell Incline Bench Press"></li>
+    
+    <li>Barbell decline bench press: 10-15 reps, 3 sets</li>
+    <li><img src="day5/barbell_decline_bench_press.jpg" alt="Barbell Decline Bench Press"></li>
+    
+    <li>Flat dumbbell fly: 10-15 reps, 3 sets</li>
+    <li><img src="day5/flat_dumbbell_fly.jpg" alt="Flat Dumbbell Fly"></li>
+    
+    <li>Incline dumbbell fly: 10-15 reps, 3 sets</li>
+    <li><img src="day5/incline_dumbbell_fly.jpg" alt="Incline Dumbbell Fly"></li>
+    
+    <li>Incline Dumbbell press: 10-15 reps, 3 sets</li>
+    <li><img src="day5/incline_dumbbell_press.jpg" alt="Incline Dumbbell Press"></li>
+  </ul>
+</div>
+
+<h3>Abs:</h3>
+<div class="exercise">
+  <ul>
+    <li>Dumbbell side twist: 10-15 reps, 3 sets</li>
+    <li><img src="day5/dumbbell_side_twist.jpg" alt="Dumbbell Side Twist"></li>
+    
+    <li>Meat crunches: 10-15 reps, 3 sets</li>
+    <li><img src="day5/meat_crunches.jpg" alt="Meat Crunches"></li>
+    
+    <li>Russian twist: 10-15 reps, 3 sets</li>
+    <li><img src="day5/russian_twist.jpg" alt="Russian Twist"></li>
+    
+    <li>Nine leg curl: 10-15 reps, 3 sets</li>
+    <li><img src="day5/nine_leg_curl.jpg" alt="Nine Leg Curl"></li>
+    
+    <li>Butterfly: 10-15 reps, 3 sets</li>
+    <li><img src="day5/butterfly.jpg" alt="Butterfly"></li>
+    
+    <li>Seat up bench: 10-15 reps, 3 sets</li>
+    <li><img src="day5/seat_up_bench.jpg" alt="Seat Up Bench"></li>
+    
+    <li>Elbow plank: 10-15 reps, 3 sets</li>
+    <li><img src="day5/elbow_plank.jpg" alt="Elbow Plank"></li>
+  </ul>
+</div>
+`;
+          case "day6":
+            return `<h3>Stretching and Push up and Free squad:</h3>
+<div class="exercise">
+  <ul>
+    
+    
+    <li>Barbell squat: 10-15 reps, 3 sets</li>
+    <li><img src="day3/barbell_squat.jpg" alt="Barbell Squat"></li>
+    
+    <li>Sumo squat: 10-15 reps, 3 sets</li>
+    <li><img src="day6/sumo_squat.jpg" alt="Sumo Squat"></li>
+    
+    <li>Hip thrust: 10-15 reps, 3 sets</li>
+    <li><img src="day6/hip_thrust.jpg" alt="Hip Thrust"></li>
+    
+    <li>Leg extension: 10-15 reps, 3 sets</li>
+    <li><img src="day3/leg_extension.jpg" alt="Leg Extension"></li>
+  </ul>
+</div>
+
+<h3>Back:</h3>
+<div class="exercise">
+  <ul>
+    <li>Chin up: 3 sets</li>
+    <!-- Image for Chin up -->
+    <li><img src="day6/chin_up.jpg" alt="Chin Up"></li>
+    
+    <li>Lat pull down: 10-15 reps, 3 sets</li>
+    <li><img src="day2/lat_pull_down.jpg" alt="Lat Pull Down"></li>
+    
+    <li>Dumbbell single arm bend over row: 10 reps, 3 sets</li>
+    <li><img src="day6/dumbbell_single_arm_bend_over_row.jpg" alt="Dumbbell Single Arm Bend Over Row"></li>
+    
+    <li>Seated cable row: 10-15 reps, 3 sets</li>
+    <li><img src="day2/seated_cable_row.jpg" alt="Seated Cable Row"></li>
+  </ul>
+</div>
+
+<h3>Biceps:</h3>
+<div class="exercise">
+  <ul>
+    <li>Barbell curl: 10-15 reps, 3 sets</li>
+    <li><img src="day2/barbell_curl.jpg" alt="Barbell Curl"></li>
+    
+    <li>Dumbbell concentration curl: 10-15 reps, 3 sets</li>
+    <li><img src="day6/dumbbell_concentration_curl.jpg" alt="Dumbbell Concentration Curl"></li>
+    
+    <li>Preacher curl: 10-15 reps, 3 sets</li>
+    <li><img src="day2/preacher_curl.jpg" alt="Preacher Curl"></li>
+    
+    <li>Seated curl: 10-15 reps, 3 sets</li>
+    <li><img src="day6/seated_curl.jpg" alt="Seated Curl"></li>
+  </ul>
+</div>
+`;
+          case "day7":
+            return "<h3>Day – 7: Rest</h3><p>Rest day - Take a break!</p>";
+          default:
+            return "<p>No routine found for selected day</p>";
+        }
+      }
+    </script>
+  </body>
+</html>
